@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://ioana:ioana@mern-app.2axnr.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "",
+    "githubSecret": ""
+}

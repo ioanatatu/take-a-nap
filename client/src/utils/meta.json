@@ -1,0 +1,79 @@
+[
+    {
+        "technology": "react",
+        "features": [
+            {
+                "name": "form handling",
+                "description": "with react-hook-form package"
+            },
+            {
+                "name": "prop types validation",
+                "description": "with prop-types package"
+            },
+            {
+                "name": "http requests",
+                "description": "with axios"
+            },
+            {
+                "name": "routing",
+                "description": "react-router-dom packages"
+            },
+            {
+                "name": "private routes",
+                "description": "protecting routes on the client-side"
+            },
+            {
+                "name": "signature pad component",
+                "description": "react-signature-canvas package"
+            },
+            {
+                "name": "last location",
+                "description": "react-router-last-location package"
+            },
+            {
+                "name": "smooth scrolling",
+                "description": "with react-scroll package"
+            }
+        ]
+    },
+    {
+        "technology": "redux",
+        "features": [
+            {
+                "name": "thunk",
+                "description": "middleware for redux"
+            }
+        ]
+    },
+    {
+        "technology": "nodeJS",
+        "features": [
+            {
+                "name": "token-based authentication",
+                "description": "JSON Webtoken package"
+            },
+            {
+                "name": "form validation",
+                "description": "server-side with express-validator middleware"
+            }
+        ]
+    },
+    {
+        "technology": "webpack",
+        "features": [
+            {
+                "name": "support for css modules",
+                "description": "webpack configuration with style-loader and css-loader packages"
+            }
+        ]
+    },
+    {
+        "technology": "git",
+        "features": [
+            {
+                "name": "workflow",
+                "description": "placeholder..."
+            }
+        ]
+    }
+]

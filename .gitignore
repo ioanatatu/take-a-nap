@@ -1,0 +1,7 @@
+/node_modules
+/client/node_modules
+/config/default.json
+package-lock.json
+/server/db-secret.js
+/server/secrets.json
+/icons

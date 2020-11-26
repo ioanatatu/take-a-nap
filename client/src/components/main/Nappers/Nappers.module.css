@@ -1,0 +1,77 @@
+.Nappers {
+    /* background-color: pink; */
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh;
+}
+.TextBlue {
+    text-align: center;
+    line-height: 24px;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 10%;
+    font-weight: 700;
+    color: #3a2ae4;
+    max-width: 300px;
+}
+.Profile .Form {
+    margin-top: 3%;
+}
+.h2 {
+    text-align: center;
+    font-size: 60px;
+    color: black;
+    margin-bottom: 20px;
+}
+.User {
+    text-transform: capitalize;
+}
+.Profile .ButtonsContainer {
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.BtnBottom {
+    justify-self: end;
+}
+.NappersWrapper {
+    height: 100%;
+    /* background-color: #fff; */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ul.Row {
+    display: grid;
+    grid-template-columns: 24% repeat(3, 12%) 40%;
+    column-gap: 5px;
+    width: 70vw;
+    text-align: center;
+    list-style: none;
+    padding-bottom: 10px;
+    /* background-color: #fff; */
+    font-weight: 600;
+    border-bottom: 2px solid rgb(238, 94, 37);
+}
+ul.RowNappers {
+    display: grid;
+    grid-template-columns: 24% repeat(3, 12%) 40%;
+    /* background-color: #d7c5ff2f; */
+    column-gap: 5px;
+    width: 70vw;
+    text-align: center;
+    list-style: none;
+    padding: 10px 0;
+    font-size: 14px;
+}
+ul.Row li,
+ul.RowNappers li {
+    padding: 0 10px;
+}
+.Url {
+    padding: 0 5px;
+    /* overflow-x: auto; */
+}

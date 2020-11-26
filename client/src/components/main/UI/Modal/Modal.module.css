@@ -1,0 +1,75 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: #fafbfd;
+    width: 700px;
+    max-height: 80%;
+    top: 5%;
+    left: calc(50% - 300px);
+    box-shadow: rgba(199, 205, 216, 0.3) 0px 4px 12px 0px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* animation */
+    transition: all 0.3s ease-out;
+}
+.Pad {
+    padding: 40px 40px 20px 40px;
+}
+.CloseIcon {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-size: 22px;
+    cursor: pointer;
+}
+.Modal > .Footer {
+    background-color: #e9ecf1;
+    padding: 15px 40px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.FooterTextWrapper {
+}
+.Modal > .Footer input {
+    margin-right: 10px;
+    margin-left: 1px;
+    margin-bottom: 3px;
+}
+.Modal > .Footer p {
+    padding: 5px 15px;
+    font-size: 12px;
+    background-color: #7300ff1f;
+    border-left: 3px solid #7300ff;
+    border-radius: 3px;
+}
+input[type="checkbox"] {
+    height: 18px;
+    width: 18px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+input[type="checkbox"]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: -1px;
+    left: -1px;
+    border: 3px solid rgb(195, 207, 228);
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* @media (min-width: 600px) {
+    .Modal {
+        width: 5px;
+        left: calc(50% - 250px);
+        background-color: rgba(255, 255, 255, 0.108);
+    }
+} */

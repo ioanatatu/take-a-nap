@@ -1,0 +1,59 @@
+.Toolbar,
+.Nav {
+    display: flex;
+    align-items: center;
+}
+
+.Toolbar {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.102);
+
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 90;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.Toolbar a,
+.Logout {
+    margin-top: 3px;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.Toolbar a:hover,
+.Logout:hover {
+    color: #ab8ecd;
+    transition: color 0.4 linear;
+}
+.Logout {
+    font-weight: 300;
+}
+a.Logo {
+    height: 60px;
+    font-family: "Recoleta";
+    font-size: 35px;
+    color: rgb(73, 20, 208);
+    text-align: justify;
+    margin-left: 7%;
+}
+.Avatar {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    /* border: 3px solid #ab8ecd; */
+    overflow: hidden;
+    margin-left: 20px;
+}
+.Avatar > img {
+    width: 100%;
+    object-fit: contain;
+}

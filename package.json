@@ -1,0 +1,39 @@
+{
+    "name": "take-a-nap-petition",
+    "version": "1.0.0",
+    "description": "App where users can support a cause by logging in and signing the petition. Technologies: React, Express and PostgreSQL.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server",
+        "server": "nodemon server",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pndbear/take-a-nap-petition.git"
+    },
+    "author": "Ioana Tatu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/pndbear/take-a-nap-petition/issues"
+    },
+    "homepage": "https://github.com/pndbear/take-a-nap-petition#readme",
+    "dependencies": {
+        "axios": "^0.21.0",
+        "bcryptjs": "^2.4.3",
+        "concurrently": "^5.3.0",
+        "config": "^3.3.2",
+        "cookie-parser": "^1.4.5",
+        "cookie-session": "^1.4.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.6.1",
+        "gravatar": "^1.8.1",
+        "jsonwebtoken": "^8.5.1",
+        "node-sass": "^5.0.0",
+        "radium": "^0.26.1",
+        "spiced-pg": "^1.0.3",
+        "uuid": "^8.3.1"
+    }
+}

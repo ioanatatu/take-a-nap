@@ -1,0 +1,28 @@
+.Github {
+    position: absolute;
+    bottom: 12px;
+    right: 3%;
+}
+
+.Github p {
+    font-family: "Roboto Mono", sans-serif;
+    letter-spacing: -0.2px;
+    font-size: 12px;
+    font-weight: 500;
+    padding-bottom: 6px;
+    margin-right: 10px;
+    color: #4914d0;
+}
+a.GithubLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.Github p:hover {
+    color: rgb(40, 0, 202);
+    transition: color 0.4s ease-in-out;
+}
+.GithubIcon {
+    font-size: 22px;
+    /* color: red; */
+}

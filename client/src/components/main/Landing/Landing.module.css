@@ -1,0 +1,157 @@
+.Wrapper {
+    margin-left: 5vw;
+}
+
+.Btn {
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    color: white;
+}
+.ButtonContainer {
+    margin-top: 15%;
+}
+.Line {
+    height: 3px;
+    border-radius: 2px;
+    background-color: rgb(238, 94, 37);
+}
+
+@media (max-width: 599px) {
+    h1 {
+        text-align: right;
+        font-size: 50px;
+        line-height: 43px;
+        font-weight: 700;
+        color: whitesmoke;
+        position: absolute;
+        top: 16%;
+        right: 15px;
+    }
+    .TextBlue {
+        position: absolute;
+        top: 33%;
+        right: 20px;
+        text-align: right;
+        line-height: 21px;
+        width: 250px;
+        font-size: 18px;
+        font-weight: 500;
+        color: white;
+    }
+    .TextNormal {
+        position: absolute;
+        top: 44%;
+        right: 20px;
+        color: white;
+        text-align: right;
+        max-width: 300px;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 30%;
+    }
+    .Line {
+        margin-top: 20px;
+        width: 150px;
+    }
+    .TextCursive {
+        text-align: center;
+        max-width: 320px;
+        font-size: 17px;
+        margin-top: 15px;
+        font-family: "Recoleta";
+    }
+    .ButtonsContainer {
+        margin-top: 7%;
+        display: flex;
+    }
+    .Btn {
+        padding: 10px 30px;
+        width: 120px;
+        border-radius: 9px;
+        font-size: 18px;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(55, 5, 140, 0.53);
+        /* background-color: #79589f;
+        background-image: linear-gradient(
+            to left top,
+            rgba(171, 142, 205, 0) 0,
+            #ab8ecd 100%
+        ); */
+    }
+}
+
+@media (min-width: 600px) {
+    .Inline {
+        margin-top: 15%;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 50px;
+        line-height: 45px;
+        color: black;
+    }
+    .TextBlue {
+        text-align: left;
+        line-height: 22px;
+        max-width: 360px;
+        font-size: 20px;
+        margin-top: 6%;
+        margin-right: 20px;
+        font-weight: 700;
+        color: #3a2ae4;
+    }
+    .TextNormal {
+        text-align: left;
+        width: 360px;
+        font-size: 28px;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-bottom: 10%;
+    }
+    .Line {
+        width: 200px;
+    }
+    .TextCursive {
+        text-align: left;
+        max-width: 350px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-right: 20px;
+        font-family: "Recoleta";
+    }
+    .ButtonsContainer {
+        margin-top: 5%;
+        display: flex;
+    }
+    .ButtonContainer {
+        margin-right: 55px;
+    }
+    .Btn {
+        padding: 8px 30px;
+        width: 140px;
+        border-radius: 8px;
+        margin-right: 20px;
+        box-shadow: 0 2px 4px rgba(55, 5, 140, 0.53);
+    }
+}
+
+/* typing text classes */
+#type {
+    padding-right: 5px;
+    height: 35px;
+    animation: Cursor infinite 1s linear;
+}
+@keyframes Cursor {
+    0% {
+        border-right: 5px solid rgb(80, 36, 255);
+    }
+    100% {
+        border-right: 5px solid rgba(0, 0, 0, 0);
+    }
+}
+.Inline,
+.InlineSmall {
+    display: flex;
+}
