@@ -55,6 +55,10 @@
             {
                 "name": "form validation",
                 "description": "server-side with express-validator middleware"
+            },
+            {
+                "name": "email encryption",
+                "description": "with cryptr package, to use in params request when user wants to click the unsubscribe link in the email"
             }
         ]
     },

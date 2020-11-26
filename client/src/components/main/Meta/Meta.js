@@ -66,24 +66,31 @@ const Meta = ({ isVisible, partialVisibility }) => {
                 const emailExists = emails.includes(email);
                 console.log("email exists in the db", emailExists);
 
+                const payload = { email, exists: emailExists };
+
                 if (emailExists) {
                     // send an email that the user is already subscribed
                     // this means making a req to the back to send "already subscribed email"
+                    try {
+                        const res = await axios.post("/api/subscribe", payload);
+                        console.log("result from axios", res.data);
+                    } catch (err) {
+                        console.log("err --->", err);
+                    }
                 } else {
                     // email does not exist -> insert email
                     try {
                         const res = await axiosFirebase.post(
                             "/subscribers.json",
-                            {
-                                email,
-                            }
+                            { email }
                         );
                         console.log(res.statusText);
                         if (res.statusText === "OK") {
                             try {
-                                const res = await axios.post("/api/subscribe", {
-                                    email,
-                                });
+                                const res = await axios.post(
+                                    "/api/subscribe",
+                                    payload
+                                );
                                 console.log("result from axios", res.data);
                             } catch (err) {
                                 console.log("err --->", err);
