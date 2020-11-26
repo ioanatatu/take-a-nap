@@ -2,6 +2,24 @@ const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
 
+// uuid package for universally unique identifier
+const { v4: uid } = require("uuid");
+
+// Firebase
+const fb = require("../../firebase/setData");
+const admin = require("firebase-admin");
+// const fb = require("../../firebase/firebase-connect");
+// const db = fb.database();
+
+////////////// update this with the more secure verson //////////////
+var serviceAccount = require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://take-a-nap-56da1.firebaseio.com",
+});
+////////////////////////////////////////////////////////////////////
+const db = admin.database();
+
 // Send email
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
@@ -66,12 +84,35 @@ router.post("/", async (req, res) => {
 // @desc    UNsubscribe from the emailing list
 // @access  Public
 router.get("/unsubscribe/:hash", async (req, res) => {
+    console.log(req.referer);
     console.log(req.params);
+    console.log(req.body);
+    console.log(req.path);
     const { hash } = req.params;
 
     try {
         const decryptedEmail = await cryptr.decrypt(hash);
-        return res.json({ success: decryptedEmail });
+
+        // only for testing
+        // email will be added from client-side
+        /* db.ref("/subscribers/" + uid()).set({
+            email: decryptedEmail,
+        }); */
+
+        const dt = db
+            .ref("/subscribers")
+            .orderByChild("email")
+            .equalTo(decryptedEmail)
+            .once("value", function (dataSnapshot) {
+                dataSnapshot.forEach(function (childSnapshot) {
+                    var childKey = childSnapshot.key;
+                    db.ref("/subscribers/" + childKey).set({});
+                });
+            });
+
+        // return res.json({ success: decryptedEmail });
+        ////// REDIRECT TO A PAGE IN MY REACT //////////
+        return res.json({ success: dt });
     } catch (err) {
         console.log(err);
         return res.json({ success: false });

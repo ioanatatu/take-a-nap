@@ -7,7 +7,7 @@ import Scroll from "react-scroll";
 
 // Font Icons
 import { FaNodeJs, FaGitAlt, FaReact } from "react-icons/fa";
-import { SiRedux, SiWebpack } from "react-icons/si";
+import { SiRedux, SiWebpack, SiFirebase } from "react-icons/si";
 
 // JSON
 import meta from "../../../utils/meta.json";
@@ -44,7 +44,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
 
     const handleChange = (event) => {
         setEmail(event.target.value);
-        console.log(email);
         setErr(false);
     };
 
@@ -57,16 +56,23 @@ const Meta = ({ isVisible, partialVisibility }) => {
                     email,
                 });
                 const obj = res.data;
+                console.log("obj", obj);
 
-                const emails = Object.keys(obj).map((key) => {
-                    return obj[key].email ? obj[key].email : null;
-                });
+                let emailExists = false;
+                let payload = {};
 
-                console.log(emails);
-                const emailExists = emails.includes(email);
-                console.log("email exists in the db", emailExists);
+                if (obj) {
+                    console.log("sjhfsjhkajlsjdlaklskal");
+                    const emails = Object.keys(obj).map((key) => {
+                        return obj[key].email ? obj[key].email : null;
+                    });
 
-                const payload = { email, exists: emailExists };
+                    console.log(emails);
+                    emailExists = emails.includes(email);
+                    console.log("email exists in the db", emailExists);
+                    payload.email = email;
+                    payload.exists = emailExists;
+                }
 
                 if (emailExists) {
                     // send an email that the user is already subscribed
@@ -197,7 +203,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                 <h5>Technologies I am using</h5>
                 <div>
                     <Link
-                        // activeClass={css.Active}
                         to="react"
                         spy={true}
                         smooth={true}
@@ -209,7 +214,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                         <FaReact className={css.FontIcons} />
                     </Link>
                     <Link
-                        activeClass={css.Active}
                         to="redux"
                         spy={true}
                         smooth={true}
@@ -220,7 +224,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                         <SiRedux className={css.FontIcons} />
                     </Link>
                     <Link
-                        activeClass={css.Active}
                         to="nodeJS"
                         spy={true}
                         smooth={true}
@@ -231,7 +234,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                         <FaNodeJs className={css.FontIcons} />
                     </Link>
                     <Link
-                        activeClass={css.Active}
                         to="webpack"
                         spy={true}
                         smooth={true}
@@ -242,7 +244,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                         <SiWebpack className={css.FontIcons} />
                     </Link>
                     <Link
-                        activeClass={css.Active}
                         to="git"
                         spy={true}
                         smooth={true}
@@ -251,6 +252,16 @@ const Meta = ({ isVisible, partialVisibility }) => {
                         containerId="container"
                     >
                         <FaGitAlt className={css.FontIcons} />
+                    </Link>
+                    <Link
+                        to="firebase"
+                        spy={true}
+                        smooth={true}
+                        offset={0}
+                        duration={300}
+                        containerId="container"
+                    >
+                        <SiFirebase className={css.FontIcons} />
                     </Link>
                 </div>
             </span>

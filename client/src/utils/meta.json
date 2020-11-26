@@ -72,6 +72,19 @@
         ]
     },
     {
+        "technology": "firebase",
+        "features": [
+            {
+                "name": "client-side",
+                "description": "connect with axios from React"
+            },
+            {
+                "name": "server-side",
+                "description": "install firebase package and connect with firebase db from the server"
+            }
+        ]
+    },
+    {
         "technology": "git",
         "features": [
             {
