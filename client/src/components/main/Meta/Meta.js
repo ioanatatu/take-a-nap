@@ -1,6 +1,10 @@
 // Styles
 import css from "./Meta.module.css";
 
+// Tippy package
+import Tippy from "@tippyjs/react";
+import "./tippy.css";
+
 // React
 import React, { useRef, useState, useEffect, Fragment } from "react";
 import Scroll from "react-scroll";
@@ -22,7 +26,7 @@ import Spinner from "../UI/Spinner/Spinner";
 const Element = Scroll.Element;
 const Link = Scroll.Link;
 
-const Meta = ({ isVisible, partialVisibility }) => {
+const Meta = ({ isVisible, show }) => {
     const inputRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(false);
@@ -30,14 +34,30 @@ const Meta = ({ isVisible, partialVisibility }) => {
     const [subscribed, setSubscribed] = useState(
         JSON.parse(localStorage.getItem("subscribed"))
     );
-    console.log("isVisible", isVisible);
+
+    // state for tooltip
+    const [disabled, setDisabled] = useState(false);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        console.log("isVisible", isVisible);
         if (!isVisible) {
             setEmail("");
         }
-    }, [isVisible]);
+
+        if (show) {
+            setDisabled(false);
+
+            setTimeout(() => {
+                setTimeout(() => {
+                    console.log("this second");
+                    setVisible(false);
+                    setDisabled(true);
+                }, 3000);
+                console.log("FIRST");
+                setVisible(true);
+            }, 1000);
+        }
+    }, [show, isVisible]);
     ////////////////////////// TO DO //////////////////////////
     // install wrapper component to track if react component is visible on screen to clear the input field
     // https://reactjsexample.com/a-wrapper-component-to-track-if-your-react-component-is-visible-on-screen/
@@ -146,7 +166,6 @@ const Meta = ({ isVisible, partialVisibility }) => {
                 regularly, by adding new features and fixing bugs. On a weekly
                 basis I will be deploying to heroku. Enjoy!
             </p>
-
             <div className={css.Subscribe}>
                 <p
                     style={{
@@ -201,69 +220,83 @@ const Meta = ({ isVisible, partialVisibility }) => {
 
             <span className={css.TechnologiesIconsBox}>
                 <h5>Technologies I am using</h5>
-                <div>
-                    <Link
-                        to="react"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                        onClick={clickScrollHandler}
-                    >
-                        <FaReact className={css.FontIcons} />
-                    </Link>
-                    <Link
-                        to="redux"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                    >
-                        <SiRedux className={css.FontIcons} />
-                    </Link>
-                    <Link
-                        to="nodeJS"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                    >
-                        <FaNodeJs className={css.FontIcons} />
-                    </Link>
-                    <Link
-                        to="webpack"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                    >
-                        <SiWebpack className={css.FontIcons} />
-                    </Link>
-                    <Link
-                        to="git"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                    >
-                        <FaGitAlt className={css.FontIcons} />
-                    </Link>
-                    <Link
-                        to="firebase"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={300}
-                        containerId="container"
-                    >
-                        <SiFirebase className={css.FontIcons} />
-                    </Link>
-                </div>
+                <Tippy
+                    disabled={disabled}
+                    visible={visible}
+                    content={
+                        <span className={css.Tip} style={{ color: "#eeeefa" }}>
+                            click on one of the buttons
+                            <br />
+                            to auto-scroll to a section
+                        </span>
+                    }
+                    delay={1000}
+                    offset={[0, 5]}
+                >
+                    <div>
+                        <Link
+                            to="react"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                            onClick={clickScrollHandler}
+                        >
+                            <FaReact className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="redux"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <SiRedux className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="nodeJS"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <FaNodeJs className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="webpack"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <SiWebpack className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="git"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <FaGitAlt className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="firebase"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <SiFirebase className={css.FontIcons} />
+                        </Link>
+                    </div>
+                </Tippy>
             </span>
 
             <div className={css.Technologies}>

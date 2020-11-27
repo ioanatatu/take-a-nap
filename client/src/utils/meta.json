@@ -33,6 +33,10 @@
             {
                 "name": "smooth scrolling",
                 "description": "with react-scroll package"
+            },
+            {
+                "name": "tooltips",
+                "description": "with @tippyjs/react package; tooltip becomes visible with a one sec delay and is disabled with setTimeout after 3 sec"
             }
         ]
     },

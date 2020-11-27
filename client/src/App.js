@@ -83,8 +83,8 @@ const App = () => {
                             showmodalhandler={showModalHandler}
                         >
                             {" "}
-                            <TrackVisibility once>
-                                <Meta />
+                            <TrackVisibility>
+                                <Meta show={showModal} />
                             </TrackVisibility>
                         </Modal>
                         <Switch>
