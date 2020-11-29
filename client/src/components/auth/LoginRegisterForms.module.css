@@ -18,6 +18,13 @@
     margin: 30px 0;
     font-size: 16px;
 }
+.Input {
+    min-height: 60px;
+    /* background-color: green; */
+    margin-bottom: 1px;
+    padding: 0;
+    position: relative;
+}
 .Input input {
     background: none;
     border: none;
@@ -48,7 +55,7 @@
 .Container .Footer {
     margin-top: auto;
 }
-.Container span {
+.Container .Link {
     border-bottom: 4px solid #ab8ecd;
 }
 
@@ -57,8 +64,8 @@
         text-align: center;
         font-size: 50px;
         line-height: 45px;
-        margin-top: 15%;
         color: black;
+        margin-top: 5%;
     }
     .Container .TextBlue {
         text-align: center;
@@ -95,4 +102,19 @@
     .ButtonContainer {
         margin-right: 55px;
     }
+}
+
+/* Alerts */
+.AlertMsgWrapper {
+    position: absolute;
+    top: -15px;
+    text-align: left;
+    line-height: 10px;
+    width: 300px;
+}
+.AlertMsg {
+    color: #fc4b1f;
+    font-size: 11px;
+    background-color: #fc1f1f10;
+    margin-bottom: 2px;
 }

@@ -19,12 +19,12 @@ const Github = ({ auth: { isAuthenticated } }) => {
         >
             <div className={css.Github}>
                 <a
-                    href="https://github.com/ioanatatu/take-a-nap-petition"
+                    href="https://github.com/ioanatatu/take-a-nap"
                     target="_blank"
                     rel="noreferrer"
                     className={css.GithubLink}
                 >
-                    {!isAuthenticated && <p>see project code on </p>}
+                    {!isAuthenticated && <p>see code on </p>}
 
                     <div className={css.GithubIcon}>
                         <FaGithub color="red" />

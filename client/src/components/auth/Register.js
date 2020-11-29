@@ -1,6 +1,6 @@
-import general from "./LoginRegisterForms.module.css";
+import auth from "./LoginRegisterForms.module.css";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 // Redux
@@ -12,7 +12,26 @@ import PropTypes from "prop-types";
 // Components
 import Alert from "../../components/main/Alert/Alert";
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
+    const [alertFirst, setAlertFirst] = useState([]);
+    const [alertLast, setAlertLast] = useState([]);
+    const [alertEmail, setAlertEmail] = useState([]);
+    const [alertPass, setAlertPass] = useState([]);
+    const [alertPass2, setAlertPass2] = useState([]);
+
+    useEffect(() => {
+        alerts != null && alerts.length > 0 && console.log(alerts);
+        if (alerts != null && alerts.length > 0) {
+            setAlertFirst(alerts.filter((alert) => alert.param === "first"));
+            setAlertLast(alerts.filter((alert) => alert.param === "last"));
+            setAlertEmail(alerts.filter((alert) => alert.param === "email"));
+            setAlertPass(alerts.filter((alert) => alert.param === "password"));
+            setAlertPass2(
+                alerts.filter((alert) => alert.param === "password2")
+            );
+        }
+    }, [alerts]);
+
     const [formData, setFormData] = useState({
         first: "",
         last: "",
@@ -24,8 +43,26 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     const { first, last, email, password, password2 } = formData;
 
     const onChange = (e) => {
-        console.log(e.target.value);
+        console.log(e.target.name);
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        // eslint-disable-next-line default-case
+        switch (e.target.name) {
+            case "first":
+                setAlertFirst([]);
+                break;
+            case "last":
+                setAlertLast([]);
+                break;
+            case "email":
+                setAlertEmail([]);
+                break;
+            case "password":
+                setAlertPass([]);
+                break;
+            case "password2":
+                setAlertPass2([]);
+                break;
+        }
     };
 
     const onSubmit = async (e) => {
@@ -33,7 +70,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
         if (password !== password2) {
             console.log("passwords do not match");
-            setAlert("Passwords do not match", "danger");
+            setAlert(
+                { msg: "Passwords do not match", param: "password2" },
+                "danger"
+            );
         } else {
             register(first, last, email, password, password2);
         }
@@ -46,21 +86,29 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <div className={general.Container}>
+            <div className={auth.Container}>
+                {/*<Alert className={auth.Alert} />*/}
                 <h1>register</h1>
-                <div className={general.Home}>
+                <div className={auth.Home}>
                     <Link
-                        className={`${general.TextCursive} ${general.Hover}`}
+                        className={`${auth.TextCursive} ${auth.Hover}`}
                         to="/"
                     >
                         home
                     </Link>
                 </div>
 
-                <p className={general.TextBlue}>Create Your Account</p>
+                <p className={auth.TextBlue}>Create Your Account</p>
 
-                <form className={general.Form} onSubmit={(e) => onSubmit(e)}>
-                    <div className={general.Input}>
+                <form className={auth.Form} onSubmit={(e) => onSubmit(e)}>
+                    <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertFirst.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="text"
                             placeholder="first name"
@@ -70,7 +118,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                             // required
                         />
                     </div>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertLast.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="text"
                             placeholder="last name"
@@ -80,7 +135,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                             // required
                         />
                     </div>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertEmail.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="email"
                             placeholder="email"
@@ -90,7 +152,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                             // required
                         />
                     </div>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertPass.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="password"
                             placeholder="password"
@@ -101,7 +170,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                             // required
                         />
                     </div>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertPass2.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="password"
                             placeholder="confirm password"
@@ -114,31 +190,31 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     </div>
                     <input
                         type="submit"
-                        className={general.Btn}
+                        className={auth.Btn}
                         style={{ backgroundColor: "#3333dd" }}
                         value="register"
                     />
                 </form>
 
-                <p className={general.Footer}>
+                <p className={auth.Footer}>
                     Already have an account?{" "}
                     <Link to="/login">
-                        <span>Sign in.</span>
+                        <span className={auth.Link}>Sign in.</span>
                     </Link>
                 </p>
             </div>
-            <Alert />
         </Fragment>
     );
 };
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
+    alerts: state.alert,
 });
 
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
+    alerts: PropTypes.array.isRequired,
     isAuthenticated: PropTypes.bool,
 };
 

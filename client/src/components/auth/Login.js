@@ -1,4 +1,4 @@
-import general from "./LoginRegisterForms.module.css";
+import auth from "./LoginRegisterForms.module.css";
 
 import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
@@ -37,23 +37,20 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <div className={general.Container}>
+            <div className={auth.Container}>
                 <h1>login</h1>
-                <div className={general.Home}>
+                <div className={auth.Home}>
                     <Link
                         to="/"
-                        className={`${general.TextCursive} ${general.Hover}`}
+                        className={`${auth.TextCursive} ${auth.Hover}`}
                     >
                         home
                     </Link>
                 </div>
-                <p className={general.TextBlue}>
-                    {" "}
-                    Welcome back, fellow napper!
-                </p>
+                <p className={auth.TextBlue}> Welcome back, fellow napper!</p>
 
                 <form className="form" onSubmit={(e) => onSubmit(e)}>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
                         <input
                             type="email"
                             placeholder="Email Address"
@@ -62,7 +59,7 @@ const Login = ({ login, isAuthenticated }) => {
                             onChange={(e) => onChange(e)}
                         />
                     </div>
-                    <div className={general.Input}>
+                    <div className={auth.Input}>
                         <input
                             type="password"
                             placeholder="Password"
@@ -74,14 +71,14 @@ const Login = ({ login, isAuthenticated }) => {
                     <input
                         type="submit"
                         value="login"
-                        className={general.Btn}
+                        className={auth.Btn}
                         style={{ backgroundColor: "#3333dd" }}
                     />
                 </form>
-                <p className={general.Footer}>
+                <p className={auth.Footer}>
                     Don't have an account?{" "}
                     <Link to="/register">
-                        <span>Create one.</span>
+                        <span className={auth.Link}>Create one.</span>
                     </Link>
                 </p>
             </div>

@@ -56,6 +56,10 @@ const Meta = ({ isVisible, show }) => {
                 console.log("FIRST");
                 setVisible(true);
             }, 1000);
+        } else {
+            // for tippy
+            setVisible(false);
+            setDisabled(true);
         }
     }, [show, isVisible]);
     ////////////////////////// TO DO //////////////////////////
@@ -231,7 +235,8 @@ const Meta = ({ isVisible, show }) => {
                         </span>
                     }
                     delay={1000}
-                    offset={[0, 5]}
+                    offset={[0, 25]}
+                    placement="right"
                 >
                     <div>
                         <Link

@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: false,
     loading: true,
     user: null,
 };
@@ -35,7 +35,6 @@ export default function (state = initialState, action) {
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT:
-        case DELETE_ACCOUNT:
             localStorage.removeItem("token");
             return {
                 ...state,
@@ -45,11 +44,22 @@ export default function (state = initialState, action) {
                 user: null,
             };
         case LOAD_USER:
+            console.log("///////////////// payload from loadUser ", payload);
             return {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
                 user: payload,
+            };
+        case DELETE_ACCOUNT:
+            localStorage.removeItem("token");
+            localStorage.removeItem("showModalOnLoad");
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                user: null,
             };
         default:
             return state;

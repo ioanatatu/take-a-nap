@@ -6,15 +6,23 @@ import css from "./Landing.module.css";
 // React Tools
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const Landing = (isAuthenticated) => {
+const Landing = ({ isAuthenticated }) => {
+    const history = useHistory();
+
     useEffect(() => {
-        setTimeout(init, 5000);
-    }, []);
+        console.log("history", history);
+
+        if (history.location.pathname === "/") {
+            setTimeout(init, 5000);
+        }
+        console.log("isAuthenticated", isAuthenticated);
+    }, [isAuthenticated]);
 
     return (
         <div className={css.Wrapper}>
@@ -52,6 +60,7 @@ const Landing = (isAuthenticated) => {
                 Help us turn napping at work into reality and you will make the
                 world a happier place.
             </p>
+
             {!isAuthenticated ? (
                 <div className={css.ButtonsContainer}>
                     <Link
@@ -93,7 +102,14 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {})(Landing);
-
+/*
+ *
+ *
+ *
+ *
+ *
+ * helper functions
+ */
 const Type = function (txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
     this.words = words;

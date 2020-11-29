@@ -41,6 +41,7 @@ const App = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
+        store.dispatch(loadUser());
         if (localStorage.token) {
             console.log(
                 "---------- CHECK ONCE USER IS REGISTERED/ LOGGED IN ------------"
@@ -51,9 +52,6 @@ const App = () => {
             store.dispatch(loadSignature());
         }
 
-        //////////////////////////////////////////////////// REMEMBER //////////////////////////////////////////
-        /////////////////////////////// to remove from localStorage when user deletes account //////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////
         // show Modal on load if box is not checked
         // in many browsers local storage can only store string
         let show = JSON.parse(localStorage.getItem("showModalOnLoad"));
