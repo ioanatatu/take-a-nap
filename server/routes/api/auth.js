@@ -54,7 +54,12 @@ router.post("/", userLoginValidator, userValidationResult, async (req, res) => {
         if (!result.rows[0]) {
             return res.status(422).json({
                 // email doesn't exits in the db, but we just show a general invalid credentials message
-                errors: [{ msg: "Invalid Credentials" }],
+                errors: [
+                    {
+                        msg: "Invalid Credentials. Try again.",
+                        param: "email",
+                    },
+                ],
             });
         }
 
@@ -68,6 +73,7 @@ router.post("/", userLoginValidator, userValidationResult, async (req, res) => {
                     {
                         msg:
                             "Either email or password are incorrect. Try again.",
+                        param: "email",
                     },
                 ],
             });

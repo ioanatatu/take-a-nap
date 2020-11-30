@@ -52,7 +52,7 @@ const Meta = ({ isVisible, show }) => {
                     console.log("this second");
                     setVisible(false);
                     setDisabled(true);
-                }, 3000);
+                }, 5000);
                 console.log("FIRST");
                 setVisible(true);
             }, 1000);
@@ -62,9 +62,6 @@ const Meta = ({ isVisible, show }) => {
             setDisabled(true);
         }
     }, [show, isVisible]);
-    ////////////////////////// TO DO //////////////////////////
-    // install wrapper component to track if react component is visible on screen to clear the input field
-    // https://reactjsexample.com/a-wrapper-component-to-track-if-your-react-component-is-visible-on-screen/
 
     const handleChange = (event) => {
         setEmail(event.target.value);
@@ -86,7 +83,6 @@ const Meta = ({ isVisible, show }) => {
                 let payload = {};
 
                 if (obj) {
-                    console.log("sjhfsjhkajlsjdlaklskal");
                     const emails = Object.keys(obj).map((key) => {
                         return obj[key].email ? obj[key].email : null;
                     });
@@ -168,7 +164,11 @@ const Meta = ({ isVisible, show }) => {
             <p className={css.Subtitle}>
                 As part of my learning routine, I am working on this project
                 regularly, by adding new features and fixing bugs. On a weekly
-                basis I will be deploying to heroku. Enjoy!
+                basis I will be deploying to heroku.
+            </p>
+            <p className={css.Subtitle} style={{ marginBottom: 15 }}>
+                Below you can check out all the packages, methods and
+                technologies I am working with.
             </p>
             <div className={css.Subscribe}>
                 <p
@@ -228,7 +228,7 @@ const Meta = ({ isVisible, show }) => {
                     disabled={disabled}
                     visible={visible}
                     content={
-                        <span className={css.Tip} style={{ color: "#eeeefa" }}>
+                        <span className={css.Tip} style={{ color: "black" }}>
                             click on one of the buttons
                             <br />
                             to auto-scroll to a section
@@ -346,6 +346,8 @@ const mapMetaToTable = (array) => {
                 <div className={css.Name}>{el.technology}</div>
                 <div>
                     {el.features.map((feat, idx) => {
+                        const description = feat.description.split(";");
+                        console.log(description);
                         return (
                             <div
                                 style={{
@@ -362,7 +364,19 @@ const mapMetaToTable = (array) => {
                                     </span>
                                 </p>
                                 <p style={{ display: "inline-block" }}>
-                                    {feat.description}
+                                    {description.map((desc, i) => {
+                                        return (
+                                            <Fragment>
+                                                <span
+                                                    key={i.toString()}
+                                                    style={{ didplay: "block" }}
+                                                >
+                                                    {desc}
+                                                </span>
+                                                <br />
+                                            </Fragment>
+                                        );
+                                    })}
                                 </p>
                             </div>
                         );

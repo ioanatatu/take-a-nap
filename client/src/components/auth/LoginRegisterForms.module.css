@@ -30,7 +30,7 @@
     border: none;
     outline: none;
     border-bottom: 2px solid rgb(238, 94, 37);
-    height: 45px;
+    height: 60px;
     width: 300px;
     font-family: "Recoleta";
     font-size: 24px;
@@ -107,7 +107,7 @@
 /* Alerts */
 .AlertMsgWrapper {
     position: absolute;
-    top: -15px;
+    /* top: -10px; */
     text-align: left;
     line-height: 10px;
     width: 300px;
@@ -115,6 +115,6 @@
 .AlertMsg {
     color: #fc4b1f;
     font-size: 11px;
-    background-color: #fc1f1f10;
+    /* background-color: #16161610; */
     margin-bottom: 2px;
 }

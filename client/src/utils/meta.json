@@ -36,7 +36,7 @@
             },
             {
                 "name": "tooltips",
-                "description": "with @tippyjs/react package; tooltip becomes visible with a one sec delay and is disabled with setTimeout after 3 sec"
+                "description": "> with @tippyjs/react package; > tooltip becomes visible with a one sec delay and is disabled with setTimeout after 3 seconds"
             }
         ]
     },
@@ -80,11 +80,11 @@
         "features": [
             {
                 "name": "client-side",
-                "description": "connect with axios from React"
+                "description": "> connect to firebase with axios from React; > used to store subscribers' email addresses"
             },
             {
                 "name": "server-side",
-                "description": "install firebase package and connect with firebase db from the server"
+                "description": "> install firebase package and connect to firebase database from the server; > used for deleting email addresses when unsubscribing from newsletter"
             }
         ]
     },

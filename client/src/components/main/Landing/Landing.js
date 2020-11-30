@@ -16,13 +16,14 @@ const Landing = ({ isAuthenticated }) => {
     const history = useHistory();
 
     useEffect(() => {
-        console.log("history", history);
-
         if (history.location.pathname === "/") {
-            setTimeout(init, 5000);
+            setTimeout(() => {
+                init(true);
+            }, 5000);
         }
         console.log("isAuthenticated", isAuthenticated);
-    }, [isAuthenticated]);
+        return () => init(false);
+    }, [isAuthenticated, history.location.pathname]);
 
     return (
         <div className={css.Wrapper}>
@@ -145,10 +146,20 @@ Type.prototype.type = function () {
     }
     setTimeout(() => this.type(), typeSpeed);
 };
-function init() {
-    const txtElement = document.querySelector(".txtype");
-    const words = JSON.parse(txtElement.getAttribute("words"));
-    const wait = txtElement.getAttribute("wait");
+function init(start) {
+    if (start) {
+        const txtElement = document.querySelector(".txtype");
+        let words = [];
+        if (txtElement) {
+            words = JSON.parse(txtElement.getAttribute("words"));
+        } else {
+            console.log("txtElement is NULL so exiting init()");
+            return;
+        }
+        const wait = txtElement.getAttribute("wait");
 
-    new Type(txtElement, words, wait);
+        new Type(txtElement, words, wait);
+    } else {
+        return;
+    }
 }

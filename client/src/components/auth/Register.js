@@ -10,7 +10,7 @@ import { register } from "../../redux/actions/auth";
 import PropTypes from "prop-types";
 
 // Components
-import Alert from "../../components/main/Alert/Alert";
+// import Alert from "../../components/main/Alert/Alert";
 
 const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
     const [alertFirst, setAlertFirst] = useState([]);
@@ -70,17 +70,14 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
 
         if (password !== password2) {
             console.log("passwords do not match");
-            setAlert(
-                { msg: "Passwords do not match", param: "password2" },
-                "danger"
-            );
+            setAlert("Passwords do not match", "password2", "danger");
         } else {
             register(first, last, email, password, password2);
         }
     };
 
+    // Redirect to Profile after registration
     if (isAuthenticated) {
-        console.log("@@@@@___ this is redirecting me to profile");
         return <Redirect to="/profile" />;
     }
 
@@ -103,11 +100,15 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                 <form className={auth.Form} onSubmit={(e) => onSubmit(e)}>
                     <div className={auth.Input}>
                         <span className={auth.AlertMsgWrapper}>
-                            {alertFirst.map((alert) => (
-                                <div key={alert.id} className={auth.AlertMsg}>
-                                    {alert.msg}
-                                </div>
-                            ))}
+                            {alertFirst &&
+                                alertFirst.map((alert) => (
+                                    <div
+                                        key={alert.id}
+                                        className={auth.AlertMsg}
+                                    >
+                                        {alert.msg}
+                                    </div>
+                                ))}
                         </span>
                         <input
                             type="text"
@@ -115,6 +116,7 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                             name="first"
                             // value={first}
                             onChange={(e) => onChange(e)}
+                            onClick={() => setAlertFirst([])}
                             // required
                         />
                     </div>
@@ -132,6 +134,7 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                             name="last"
                             // value={last}
                             onChange={(e) => onChange(e)}
+                            onClick={() => setAlertLast([])}
                             // required
                         />
                     </div>
@@ -149,6 +152,7 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                             name="email"
                             // value={email}
                             onChange={(e) => onChange(e)}
+                            onClick={() => setAlertEmail([])}
                             // required
                         />
                     </div>
@@ -166,7 +170,8 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                             name="password"
                             // value={password}
                             onChange={(e) => onChange(e)}
-                            minLength="6"
+                            onClick={() => setAlertPass([])}
+                            // minLength="6"
                             // required
                         />
                     </div>
@@ -184,7 +189,8 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
                             name="password2"
                             // value={password2}
                             onChange={(e) => onChange(e)}
-                            minLength="6"
+                            onClick={() => setAlertPass2([])}
+                            // minLength="6"
                             // required
                         />
                     </div>
@@ -208,6 +214,7 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
 };
 
 const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
     alerts: state.alert,
 });
 

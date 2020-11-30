@@ -83,7 +83,7 @@ const Sign = ({
                         </h1>
                         <div>
                             {!signature ? (
-                                <Spinner />
+                                <Spinner size={120} fontSize={10} />
                             ) : (
                                 <img
                                     src={`data:image/png;base64,${signature}`}

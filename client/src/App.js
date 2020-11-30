@@ -42,6 +42,7 @@ const App = () => {
 
     useEffect(() => {
         store.dispatch(loadUser());
+
         if (localStorage.token) {
             console.log(
                 "---------- CHECK ONCE USER IS REGISTERED/ LOGGED IN ------------"
@@ -131,10 +132,11 @@ const App = () => {
                         onClick={showModalHandler}
                         style={{
                             position: "absolute",
-                            top: "5%",
-                            right: "3%",
+                            top: "23px",
+                            right: "30px",
                             fontSize: 20,
                             cursor: "pointer",
+                            zIndex: "100",
                         }}
                     />
                 </LastLocationProvider>

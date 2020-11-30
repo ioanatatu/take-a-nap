@@ -1,6 +1,6 @@
 import auth from "./LoginRegisterForms.module.css";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -9,7 +9,17 @@ import { login } from "../../redux/actions/auth";
 // Components
 import Alert from "../../components/main/Alert/Alert";
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, alerts }) => {
+    const [alertEmail, setAlertEmail] = useState([]);
+    const [alertPass, setAlertPass] = useState([]);
+
+    useEffect(() => {
+        if (alerts != null && alerts.length > 0) {
+            setAlertEmail(alerts.filter((alert) => alert.param === "email"));
+            setAlertPass(alerts.filter((alert) => alert.param === "password"));
+        }
+    }, [alerts]);
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -20,6 +30,15 @@ const Login = ({ login, isAuthenticated }) => {
     const onChange = (e) => {
         console.log(e.target.value);
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        // eslint-disable-next-line default-case
+        switch (e.target.name) {
+            case "email":
+                setAlertEmail([]);
+                break;
+            case "password":
+                setAlertPass([]);
+                break;
+        }
     };
 
     const onSubmit = async (e) => {
@@ -29,8 +48,7 @@ const Login = ({ login, isAuthenticated }) => {
         login(email, password);
     };
 
-    // Redirect if loged in
-
+    // Redirect to signature if loged in
     if (isAuthenticated) {
         return <Redirect to="/signature" />;
     }
@@ -51,21 +69,41 @@ const Login = ({ login, isAuthenticated }) => {
 
                 <form className="form" onSubmit={(e) => onSubmit(e)}>
                     <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertEmail &&
+                                alertEmail.map((alert) => (
+                                    <div
+                                        key={alert.id}
+                                        className={auth.AlertMsg}
+                                    >
+                                        {alert.msg}
+                                    </div>
+                                ))}
+                        </span>
                         <input
                             type="email"
                             placeholder="Email Address"
                             name="email"
                             value={email}
                             onChange={(e) => onChange(e)}
+                            onClick={() => setAlertEmail([])}
                         />
                     </div>
                     <div className={auth.Input}>
+                        <span className={auth.AlertMsgWrapper}>
+                            {alertPass.map((alert) => (
+                                <div key={alert.id} className={auth.AlertMsg}>
+                                    {alert.msg}
+                                </div>
+                            ))}
+                        </span>
                         <input
                             type="password"
                             placeholder="Password"
                             name="password"
                             value={password}
                             onChange={(e) => onChange(e)}
+                            onClick={() => setAlertPass([])}
                         />
                     </div>
                     <input
@@ -82,17 +120,18 @@ const Login = ({ login, isAuthenticated }) => {
                     </Link>
                 </p>
             </div>
-            <Alert />
         </Fragment>
     );
 };
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
+    alerts: state.alert,
 });
 
 Login.propTypes = {
     login: PropTypes.func.isRequired,
+    alerts: PropTypes.array.isRequired,
     isAuthenticated: PropTypes.bool,
 };
 

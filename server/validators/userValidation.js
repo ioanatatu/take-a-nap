@@ -36,22 +36,21 @@ exports.userValidator = [
         .trim()
         .not()
         .isEmpty()
-        .withMessage("Email is required")
+        .withMessage(" ")
         .isEmail()
         .withMessage("Please enter a valid email"),
     check("password")
         .trim()
         .not()
         .isEmpty()
-        .withMessage("Password is required")
+        .withMessage(" ")
         .isLength({ min: 7 })
-        .withMessage("Password must be at least 7 characters long")
+        .withMessage(
+            "Password must be at least 7 characters long, should contain at least one uppercase letter, one number and one special character"
+        )
         .custom((password) => {
             const regEx = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-            if (!regEx.test(password))
-                throw new Error(
-                    "Password should contain at least one uppercase letter, one number and one special character"
-                );
+            if (!regEx.test(password)) throw new Error(" ");
             return true;
         }),
     body("password2").custom((value, { req }) => {
