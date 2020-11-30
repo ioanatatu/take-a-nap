@@ -10,11 +10,10 @@ const fb = require("../../firebase/setData");
 const admin = require("firebase-admin");
 // const fb = require("../../firebase/firebase-connect");
 // const db = fb.database();
+// const fbAdmin = require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
 
 ////////////// update this with the more secure verson //////////////
-var serviceAccount =
-    JSON.parse(process.env.fbAdmin) ||
-    require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
+var serviceAccount = JSON.parse(process.env.fbAdmin);
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://take-a-nap-56da1.firebaseio.com",
