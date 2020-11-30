@@ -35,7 +35,7 @@ const secret = require("../../secrets.json");
 const transporter = nodemailer.createTransport(
     sendgridTransport({
         auth: {
-            api_key: secret.emailSecret,
+            api_key: process.env.emailSecret || secret.emailSecret,
         },
     })
 );
