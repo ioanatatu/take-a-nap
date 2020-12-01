@@ -1,6 +1,6 @@
 ## Hi there, I'm Ioana - welcome to my project repo!
 
-<a href="https://imgflip.com/gif/4oi241">via Imgflip</a>
+![user experience](https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif)
 
 ### Languages and Tools:
 
