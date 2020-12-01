@@ -1,3 +1,5 @@
+const amDeploying = true;
+
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
@@ -11,12 +13,9 @@ const admin = require("firebase-admin");
 // const fb = require("../../firebase/firebase-connect");
 // const db = fb.database();
 
-// comment out for heroku deployment
-const fbAdmin = require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
-var serviceAccount = fbAdmin;
-
-// uncomment for heroku deplyment
-// var serviceAccount = JSON.parse(process.env.fbAdmin);
+const serviceAccount = amDeploying
+    ? JSON.parse(process.env.FIREBASE_ADMIN)
+    : require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -35,7 +34,7 @@ const cryptr = new Cryptr("myTotalySecretKey");
 
 // Require SendGrid API key
 const secret =
-    process.env.emailSecret || require("../../secrets.json").emailSecret;
+    process.env.EMAIL_SECRET || require("../../secrets.json").EMAIL_SECRET;
 
 // transporter configuration
 const transporter = nodemailer.createTransport(
@@ -124,10 +123,11 @@ router.get("/unsubscribe/:hash", async (req, res) => {
         // return res.json({ success: dt });
         // line below works
         // return res.send("<h1>you have been successfully unsubscribed</h1>");
-        const redirectDevelopment = "http://localhost:3002/";
-        const redirectProduction = "https://rocky-brook-13518.herokuapp.com/";
-        
-        res.redirect(301, redirectDevelopment);
+        let linkRedirect = amDeploying
+            ? "https://rocky-brook-13518.herokuapp.com/"
+            : "http://localhost:3002/";
+
+        res.redirect(301, linkRedirect);
         ////// how to REDIRECT TO A custom PAGE IN MY REACT ?? //////////
     } catch (err) {
         console.log(err);
