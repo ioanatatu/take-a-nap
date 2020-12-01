@@ -57,16 +57,16 @@ router.post("/", async (req, res) => {
     const encryptedEmail = cryptr.encrypt(email);
     console.log(encryptedEmail);
 
-    const linkDevelopment = "http://localhost:4000/api/subscribe/unsubscribe/";
-    const linkProduction =
-        "https://rocky-brook-13518.herokuapp.com/api/subscribe/unsubscribe/";
+    const unsubscribeLink = amDeploying
+        ? "https://rocky-brook-13518.herokuapp.com/api/subscribe/unsubscribe/"
+        : "http://localhost:4000/api/subscribe/unsubscribe/";
 
     const subject = exists
-        ? "you are already signed up"
-        : "welcome to my newsletter";
+        ? "💤 you are already signed up"
+        : "🚩 Welcome to my newsletter";
     const message = exists
-        ? `<h1>Hey, you are receiving this because you tried to subscribe to my newsletter, but you are already signed up.</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${linkDevelopment}${encryptedEmail}\">unsubscribe</a></div>`
-        : `<h1>Hey, thanks for subscribing to my newsletter!</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${linkDevelopment}${encryptedEmail}\">unsubscribe</a></div>`;
+        ? `<h1>Hey, you are receiving this because you tried to subscribe to my newsletter, but you are already signed up.</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`
+        : `<h1>Hey, thanks for subscribing to my newsletter!</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`;
 
     try {
         const result = await transporter.sendMail({
