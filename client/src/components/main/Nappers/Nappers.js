@@ -21,9 +21,9 @@ const Nappers = ({ isAuthenticated, hasSigned, userId }) => {
     const [nappers, setNappers] = useState([]);
 
     const notSigned = (
-        <span>
+        <span style={{ textAlign: "center" }}>
             <div className={css.TextBlue}>
-                Sign first and see all our supporters
+                Sign first to check out all our supporters
             </div>
             <Link to="/signature" className={`${btn.BtnGeneral} ${btn.Btn2}`}>
                 go to signature

@@ -75,6 +75,9 @@ const Profile = ({
         console.log("res.data from removeAccount", res.data);
 
         if (res.data.accountDeleted) {
+            if (localStorage.getItem("showModalOnLoad")) {
+                localStorage.removeItem("showModalOnLoad");
+            }
             logout();
             history.push("/register");
         } else {

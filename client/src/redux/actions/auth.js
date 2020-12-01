@@ -31,7 +31,7 @@ export const loadUser = () => async (dispatch) => {
             payload: res.data,
         });
     } catch (err) {
-        console.log("err from actions/auth", err);
+        console.log("~~~> err from actions/auth", err);
         dispatch({ type: AUTH_ERROR });
     }
 };
@@ -127,7 +127,6 @@ export const login = (email, password) => async (dispatch) => {
  */
 // Logout User
 export const logout = () => (dispatch) => {
-    console.log("###### inside auth logout");
     dispatch(logoutSignature());
     dispatch(logoutProfile());
     dispatch({ type: LOGOUT });
@@ -137,7 +136,7 @@ export const logout = () => (dispatch) => {
  *
  *
  */
-// DELETE User Account --------> not in use ----------
+// DELETE User Account
 export const deleteAccount = () => async (dispatch) => {
     try {
         await axios.delete("/api/auth");

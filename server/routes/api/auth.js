@@ -26,6 +26,7 @@ router.get("/", auth, async (req, res) => {
 
     try {
         const user = await db.getUser(req.user.id);
+        console.log(user.rows);
         res.json(user.rows[0]);
     } catch (err) {
         console.log("err from GET api/auth", err);

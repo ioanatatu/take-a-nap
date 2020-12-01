@@ -67,5 +67,5 @@ module.exports.deleteSignature = (id) =>
  */
 module.exports.getSigners = () =>
     db.query(
-        `SELECT s.updated_at, u.id, u.first, u.last, p.age, p.city, p.pet, p.url FROM signatures AS s JOIN users AS u ON s.user_id=u.id JOIN profiles p ON u.id = p.user_id;`
+        `SELECT s.updated_at, u.id, u.first, u.last, p.age, p.city, p.pet, p.url FROM signatures AS s LEFT JOIN users AS u ON s.user_id=u.id LEFT JOIN profiles AS p ON u.id = p.user_id;`
     );

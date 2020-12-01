@@ -11,7 +11,7 @@ import Scroll from "react-scroll";
 
 // Font Icons
 import { FaNodeJs, FaGitAlt, FaReact } from "react-icons/fa";
-import { SiRedux, SiWebpack, SiFirebase } from "react-icons/si";
+import { SiRedux, SiWebpack, SiFirebase, SiPostgresql } from "react-icons/si";
 
 // JSON
 import meta from "../../../utils/meta.json";
@@ -26,7 +26,7 @@ import Spinner from "../UI/Spinner/Spinner";
 const Element = Scroll.Element;
 const Link = Scroll.Link;
 
-const Meta = ({ isVisible, show }) => {
+const Meta = ({ show }) => {
     const inputRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(false);
@@ -40,10 +40,6 @@ const Meta = ({ isVisible, show }) => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        if (!isVisible) {
-            setEmail("");
-        }
-
         if (show) {
             setDisabled(false);
 
@@ -61,7 +57,7 @@ const Meta = ({ isVisible, show }) => {
             setVisible(false);
             setDisabled(true);
         }
-    }, [show, isVisible]);
+    }, [show]);
 
     const handleChange = (event) => {
         setEmail(event.target.value);
@@ -281,6 +277,16 @@ const Meta = ({ isVisible, show }) => {
                             <SiWebpack className={css.FontIcons} />
                         </Link>
                         <Link
+                            to="postgreSQL"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                        >
+                            <SiPostgresql className={css.FontIcons} />
+                        </Link>
+                        <Link
                             to="git"
                             spy={true}
                             smooth={true}
@@ -340,14 +346,13 @@ const mapMetaToTable = (array) => {
                     borderBottom: "0.5px solid rgb(237, 224, 250)",
                 }}
                 className={css.Technology}
-                key={el.technology}
+                key={(index + 1000).toString()}
                 name={el.technology}
             >
                 <div className={css.Name}>{el.technology}</div>
-                <div>
+                <div key={(index + 5000).toString()}>
                     {el.features.map((feat, idx) => {
                         const description = feat.description.split(";");
-                        console.log(description);
                         return (
                             <div
                                 style={{
@@ -356,7 +361,7 @@ const mapMetaToTable = (array) => {
                                     fontSize: 13,
                                     marginBottom: 8,
                                 }}
-                                key={idx.toString()}
+                                key={(idx + 2000).toString()}
                             >
                                 <p style={{ display: "inline-block" }}>
                                     <span className={css.Feat}>
@@ -368,7 +373,7 @@ const mapMetaToTable = (array) => {
                                         return (
                                             <Fragment>
                                                 <span
-                                                    key={i.toString()}
+                                                    key={(i + 3000).toString()}
                                                     style={{ didplay: "block" }}
                                                 >
                                                     {desc}

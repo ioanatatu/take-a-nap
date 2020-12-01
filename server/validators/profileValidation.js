@@ -28,9 +28,9 @@ exports.profileValidator = [
     //     .withMessage("City should be a word")
     //     .isLength({ min: 2, max: 20 }),
     check("url").custom((url) => {
-        if (url !== "") {
+        if (url && url !== "") {
             const regEx = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
-            if (!regEx.test(url)) throw new Error("Please enter a valid url");
+            if (!regEx.test(url)) throw new Error("Please enter a valid URL");
             return true;
         }
         return true;

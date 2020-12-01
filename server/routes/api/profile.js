@@ -59,15 +59,28 @@ router.post(
         console.log(req.body);
 
         let user = req.user.id;
-        let age = req.body.age == "" ? null : req.body.age;
-        let city = req.body.city.trim() == "" ? null : req.body.city.trim();
-        let pet = req.body.pet.trim() == "" ? null : req.body.pet.trim();
-        let url = req.body.url.trim();
+        let age = req.body.age
+            ? req.body.age == ""
+                ? null
+                : req.body.age
+            : null;
+        let city = req.body.city
+            ? req.body.city.trim() == ""
+                ? null
+                : req.body.city.trim()
+            : null;
+        let pet = req.body.pet
+            ? req.body.pet.trim() == ""
+                ? null
+                : req.body.pet.trim()
+            : null;
+        let url = req.body.url
+            ? req.body.url == ""
+                ? null
+                : req.body.url.trim()
+            : null;
 
-        if (
-            url !== "" &&
-            !(url.startsWith("http://") || url.startsWith("https://"))
-        ) {
+        if (url && !(url.startsWith("http://") || url.startsWith("https://"))) {
             url = `https://${url}`;
         }
 
