@@ -1,6 +1,7 @@
 ## Hi there, I'm Ioana - welcome to my project repo!
 
-![user experience](https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif)
+<!-- ![user experience](https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif) -->
+<img src="https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif" width="100%" />
 
 ### Languages and Tools:
 
