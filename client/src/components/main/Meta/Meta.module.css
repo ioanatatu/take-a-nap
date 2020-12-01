@@ -1,3 +1,6 @@
+.Active > .FontIcons {
+    fill: #1500ff;
+}
 .Tip {
     font-family: "DM Sans", sans-serif;
 }
@@ -28,6 +31,10 @@
     align-items: center;
     margin-bottom: 7px;
     border: 0.3px solid rgb(237, 224, 250);
+}
+.TechnologiesIconsBox > div {
+    margin-top: 3px;
+    margin-bottom: -5px;
 }
 .Meta span > h5 {
     font-weight: 400;
@@ -107,9 +114,6 @@
     fill: #7300ff;
     cursor: pointer;
     transition: color 0.5s linear;
-}
-.Active > .FontIcons {
-    fill: #1500ff;
 }
 .Subscribe {
     margin-bottom: 20px;

@@ -243,6 +243,7 @@ const Meta = ({ show }) => {
                             duration={300}
                             containerId="container"
                             onClick={clickScrollHandler}
+                            activeClass={css.Active}
                         >
                             <FaReact className={css.FontIcons} />
                         </Link>
@@ -253,6 +254,7 @@ const Meta = ({ show }) => {
                             offset={0}
                             duration={300}
                             containerId="container"
+                            activeClass={css.Active}
                         >
                             <SiRedux className={css.FontIcons} />
                         </Link>
@@ -263,18 +265,9 @@ const Meta = ({ show }) => {
                             offset={0}
                             duration={300}
                             containerId="container"
+                            activeClass={css.Active}
                         >
                             <FaNodeJs className={css.FontIcons} />
-                        </Link>
-                        <Link
-                            to="webpack"
-                            spy={true}
-                            smooth={true}
-                            offset={0}
-                            duration={300}
-                            containerId="container"
-                        >
-                            <SiWebpack className={css.FontIcons} />
                         </Link>
                         <Link
                             to="postgreSQL"
@@ -283,18 +276,9 @@ const Meta = ({ show }) => {
                             offset={0}
                             duration={300}
                             containerId="container"
+                            activeClass={css.Active}
                         >
                             <SiPostgresql className={css.FontIcons} />
-                        </Link>
-                        <Link
-                            to="git"
-                            spy={true}
-                            smooth={true}
-                            offset={0}
-                            duration={300}
-                            containerId="container"
-                        >
-                            <FaGitAlt className={css.FontIcons} />
                         </Link>
                         <Link
                             to="firebase"
@@ -303,8 +287,31 @@ const Meta = ({ show }) => {
                             offset={0}
                             duration={300}
                             containerId="container"
+                            activeClass={css.Active}
                         >
                             <SiFirebase className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="webpack"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                            activeClass={css.Active}
+                        >
+                            <SiWebpack className={css.FontIcons} />
+                        </Link>
+                        <Link
+                            to="git"
+                            spy={true}
+                            smooth={true}
+                            offset={0}
+                            duration={300}
+                            containerId="container"
+                            activeClass={css.Active}
+                        >
+                            <FaGitAlt className={css.FontIcons} />
                         </Link>
                     </div>
                 </Tippy>

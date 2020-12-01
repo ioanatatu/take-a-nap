@@ -12,11 +12,11 @@
             },
             {
                 "name": "http requests",
-                "description": "with axios"
+                "description": "with axios, using async await"
             },
             {
-                "name": "routing",
-                "description": "react-router-dom packages"
+                "name": "client-side routing",
+                "description": "with react-router-dom package"
             },
             {
                 "name": "private routes",
@@ -24,19 +24,19 @@
             },
             {
                 "name": "signature pad component",
-                "description": "react-signature-canvas package"
+                "description": "with react-signature-canvas package"
             },
             {
                 "name": "last location",
-                "description": "react-router-last-location package"
+                "description": "with react-router-last-location package"
             },
             {
-                "name": "smooth scrolling",
+                "name": "smooth scrolling to a target",
                 "description": "with react-scroll package"
             },
             {
                 "name": "tooltips",
-                "description": "> with @tippyjs/react package; > tooltip becomes visible with a one sec delay and is disabled with setTimeout after 3 seconds"
+                "description": "> with @tippyjs/react package; > tooltip becomes visible with a one sec delay and is disabled with setTimeout after 3 seconds; > the purpose of the tooltips throughout the project is to point to important features"
             }
         ]
     },
@@ -54,15 +54,37 @@
         "features": [
             {
                 "name": "token-based authentication",
-                "description": "JSON Webtoken package"
+                "description": "with JSON Webtoken package"
             },
             {
                 "name": "form validation",
-                "description": "server-side with express-validator middleware"
+                "description": "server-side validation with express-validator middleware and custom-made middleware"
             },
             {
                 "name": "email encryption",
-                "description": "with cryptr package, to use in params request when user wants to click the unsubscribe link in the email"
+                "description": "with cryptr package; > it is used in the params object of the request that is triggered by the unsubscribe link which is generated for the newsletter"
+            }
+        ]
+    },
+    {
+        "technology": "postgreSQL",
+        "features": [
+            {
+                "name": "server-side",
+                "description": "> on heroku; > used to store and query users, profiles and signatures"
+            }
+        ]
+    },
+    {
+        "technology": "firebase",
+        "features": [
+            {
+                "name": "client-side",
+                "description": "> connecting to firebase with axios from React; > persistent database used for storing subscribers' email addresses"
+            },
+            {
+                "name": "server-side",
+                "description": "> installed firebase package and connected to the same firebase database from server; > used for deleting email addresses when unsubscribing from newsletter"
             }
         ]
     },
@@ -76,33 +98,11 @@
         ]
     },
     {
-        "technology": "firebase",
-        "features": [
-            {
-                "name": "client-side",
-                "description": "> connect to firebase with axios from React; > used to store subscribers' email addresses"
-            },
-            {
-                "name": "server-side",
-                "description": "> install firebase package and connect to firebase database from the server; > used for deleting email addresses when unsubscribing from newsletter"
-            }
-        ]
-    },
-    {
-        "technology": "postgreSQL",
-        "features": [
-            {
-                "name": "workflow",
-                "description": "placeholder..."
-            }
-        ]
-    },
-    {
         "technology": "git",
         "features": [
             {
                 "name": "workflow",
-                "description": "placeholder..."
+                "description": "creating new branches for new features and merging them to master"
             }
         ]
     }
