@@ -28,7 +28,7 @@ const Modal = ({ showmodalhandler, show, children }) => {
                 <MdClear
                     onClick={showmodalhandler}
                     className={css.CloseIcon}
-                    fill="white"
+                    fill="black"
                 />
                 <span className={css.Pad}>{children}</span>
 

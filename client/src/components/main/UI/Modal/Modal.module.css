@@ -19,9 +19,12 @@
 }
 .CloseIcon {
     position: absolute;
-    top: -30px;
-    right: 0;
-    font-size: 22px;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(235, 237, 238, 0.844);
+    border-radius: 50%;
+    padding: 3.5px;
+    font-size: 25px;
     cursor: pointer;
 }
 .Modal > .Footer {

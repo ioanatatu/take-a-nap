@@ -54,6 +54,10 @@ router.post("/", async (req, res) => {
     let { email, exists } = req.body;
     // email = "tatu.ioana@gmail.com";
 
+    if (email === "test@testsson.com") {
+        return res.send({ message: "test email address used" });
+    }
+
     const encryptedEmail = cryptr.encrypt(email);
     console.log(encryptedEmail);
 
