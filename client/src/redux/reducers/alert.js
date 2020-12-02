@@ -13,7 +13,6 @@ export default function (state = initialState, action) {
         case REMOVE_ALERT:
             return state.filter((alert) => alert.id !== payload);
         case REMOVE_ALERTS:
-            console.log("__________state from remove state", state);
             return state.map((alert) => (alert = ""));
         default:
             return state;

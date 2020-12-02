@@ -1,8 +1,7 @@
 <h1 align="center">Welcome to the source code of take-a-nap project!</h1>
-<div align="center" style="margin-bottom: 30px;">
-<p align="left" style="background-color: #f6f5f7; border-radius: 3px; padding: 5px; width: 50%; color:black;">🚩 Visit regularly, I'm making daily improvements 🤓</p>
-<p align="left" style="background-color: #f6f5f7; border-radius: 3px; padding: 5px; width: 50%; color:black;">🚩 Go to <a href="https://www.thenap.de">thenap</a> and subscribe to my newsletter 💤</p>
-</div>
+
+<p align="center" style="background-color: #f6f5f7; border-radius: 3px; padding: 5px; color:black;">🚩 Visit regularly, I'm making daily improvements 🤓</p>
+<p align="center" style="background-color: #f6f5f7; border-radius: 3px; padding: 5px; color:black; margin-bottom: 30px;">🚩 Go to <a href="https://www.thenap.de">thenap</a> and subscribe to my newsletter 💤</p>
 
 <!-- ![user experience](https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif) -->
 <div align="center">

@@ -43,16 +43,19 @@ exports.userValidator = [
         .trim()
         .not()
         .isEmpty()
-        .withMessage(" ")
         .isLength({ min: 7 })
-        .withMessage(
-            "Password must contain at least 7 characters, one uppercase letter, one number and one special character"
-        )
+
         .custom((password) => {
             const regEx = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-            if (!regEx.test(password)) throw new Error(" ");
+            if (!regEx.test(password))
+                throw new Error(
+                    "Password must contain at least 7 characters, one uppercase letter, one number and one special character"
+                );
             return true;
-        }),
+        })
+        .withMessage(
+            "Password must contain at least 7 characters, one uppercase letter, one number and one special character"
+        ),
     body("password2").custom((value, { req }) => {
         if (value !== req.body.password) {
             throw new Error("Password confirmation does not match password");
