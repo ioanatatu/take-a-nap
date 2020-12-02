@@ -69,8 +69,8 @@ router.post("/", async (req, res) => {
         ? "💤 you are already signed up"
         : "🚩 Welcome to my newsletter";
     const message = exists
-        ? `<h1>Hey, you are receiving this because you tried to subscribe to my newsletter, but you are already signed up.</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`
-        : `<h1>Hey, thanks for subscribing to my newsletter!</h1><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`;
+        ? `<p>WEEK 0 - after deploy</p><h2>Hey, you are receiving this because you tried to subscribe to my newsletter, but you are already signed up.</h2><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`
+        : `<p>WEEK 0 - after deploy</p></p><h2>Hey, thanks for subscribing to my newsletter!</h2><p>You will receive one weekely update containing the features I am implementing.</p><p>Stay tuned!</p><div><a href=\"${unsubscribeLink}${encryptedEmail}\">unsubscribe</a></div>`;
 
     try {
         const result = await transporter.sendMail({

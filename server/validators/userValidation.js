@@ -46,7 +46,7 @@ exports.userValidator = [
         .withMessage(" ")
         .isLength({ min: 7 })
         .withMessage(
-            "Password must be at least 7 characters long, should contain at least one uppercase letter, one number and one special character"
+            "Password must contain at least 7 characters, one uppercase letter, one number and one special character"
         )
         .custom((password) => {
             const regEx = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

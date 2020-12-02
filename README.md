@@ -1,11 +1,12 @@
 <h1 align="center">Welcome to the source code of take-a-nap project!</h1>
-<ul style="margin-left: 15%;list-style: none; margin-bottom: 30px;">
-<li>🚩 Visit regularly, I'm making daily improvements 🤓</li>
-<li>🚩 Go to <a href="https://www.thenap.de">thenap</a> and subscribe to my newsletter 💤</li>
+<ul align="center" style="list-style: none; margin-bottom: 30px;">
+<li style="list-style: none;">🚩 Visit regularly, I'm making daily improvements 🤓</li>
+<li style="list-style: none;">🚩 Go to <a href="https://www.thenap.de">thenap</a> and subscribe to my newsletter 💤</li>
 </ul>
 
 <!-- ![user experience](https://media.giphy.com/media/HgighnkSzV6qr8pd7q/giphy.gif) -->
-<img src="https://media.giphy.com/media/i04lDCGXrZ4aULLjmK/giphy.gif" width="70%" style="margin-left: 15%; margin-right: 15%;" />
+<div align="center">
+<img src="https://media.giphy.com/media/i04lDCGXrZ4aULLjmK/giphy.gif" width="60%"/></div>
 
 <p align="center" style="margin-top: 20px;">Languages and Tools:</p>
 

@@ -8,11 +8,15 @@ import { connect } from "react-redux";
 import { setAlert } from "../../redux/actions/alert";
 import { register } from "../../redux/actions/auth";
 import PropTypes from "prop-types";
+import { REMOVE_ALERTS } from "../../redux/actions/types";
+import { useDispatch } from "react-redux";
 
 // Components
 // import Alert from "../../components/main/Alert/Alert";
 
 const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
+    const dispatch = useDispatch();
+
     const [alertFirst, setAlertFirst] = useState([]);
     const [alertLast, setAlertLast] = useState([]);
     const [alertEmail, setAlertEmail] = useState([]);
@@ -21,6 +25,7 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
 
     useEffect(() => {
         alerts != null && alerts.length > 0 && console.log(alerts);
+
         if (alerts != null && alerts.length > 0) {
             setAlertFirst(alerts.filter((alert) => alert.param === "first"));
             setAlertLast(alerts.filter((alert) => alert.param === "last"));
@@ -66,6 +71,9 @@ const Register = ({ setAlert, register, isAuthenticated, alerts }) => {
     };
 
     const onSubmit = async (e) => {
+        dispatch({
+            type: REMOVE_ALERTS,
+        });
         e.preventDefault();
 
         if (password !== password2) {
