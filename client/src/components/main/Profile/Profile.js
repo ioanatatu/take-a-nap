@@ -2,7 +2,6 @@
 import cl from "./Profile.module.css";
 import btn from "../../buttons.module.css";
 import css from "../../auth/LoginRegisterForms.module.css";
-import axios from "axios";
 
 // React
 import React, { Fragment, useEffect, useState } from "react";
@@ -13,10 +12,6 @@ import { useLastLocation } from "react-router-last-location";
 import { connect } from "react-redux";
 import { setAlert } from "../../../redux/actions/alert";
 import { saveProfile } from "../../../redux/actions/profile";
-import { deleteSignature } from "../../../redux/actions/signature";
-import { deleteProfile } from "../../../redux/actions/profile";
-import { deleteAccount } from "../../../redux/actions/auth";
-import { logout } from "../../../redux/actions/auth";
 import PropTypes from "prop-types";
 
 // Components
@@ -26,14 +21,11 @@ import Alert from "../Alert/Alert";
 const Profile = ({
     loading,
     saveProfile,
-    deleteSignature,
-    deleteProfile,
-    deleteAccount,
-    logout,
     isAuthenticated,
     history,
     user,
     profile,
+    showModalGeneralHandler,
 }) => {
     const [formData, setFormData] = useState({});
 
@@ -70,26 +62,17 @@ const Profile = ({
     };
 
     const removeAccount = async () => {
-        const res = await axios.delete("/api/users");
-
-        console.log("res.data from removeAccount", res.data);
-
-        if (res.data.accountDeleted) {
-            if (localStorage.getItem("showModalOnLoad")) {
-                localStorage.removeItem("showModalOnLoad");
-            }
-            logout();
-            history.push("/register");
-        } else {
-            setAlert("Something went wrong.\nPlease try again");
-            history.location.replace("/profile");
-        }
+        // 1. trigger modal
+        // 2. move functionality inside modal
+        // 3. confirm account removal inside modal
+        // 4. redirect to register page
+        showModalGeneralHandler(true);
     };
 
     return (
         <Fragment>
             {!lastLocation.pathname ? (
-                <Spinner />
+                <Spinner size={150} />
             ) : (
                 <div className={cl.Profile}>
                     {!user ? (
@@ -218,8 +201,4 @@ Profile.propTypes = {
 export default connect(mapStateToProps, {
     setAlert,
     saveProfile,
-    deleteSignature,
-    deleteProfile,
-    deleteAccount,
-    logout,
 })(Profile);

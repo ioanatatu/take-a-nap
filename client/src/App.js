@@ -3,7 +3,7 @@ import cl from "./App.css";
 
 // React Tools
 import React, { useEffect, useState } from "react";
-import TrackVisibility from "react-on-screen";
+// import TrackVisibility from "react-on-screen";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LastLocationProvider } from "react-router-last-location";
 
@@ -20,7 +20,9 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 import NotFound from "./components/main/NotFound/NotFound";
 import Github from "./components/main/UI/Github/Github";
 import Modal from "./components/main/UI/Modal/Modal";
+import ModalGeneral from "./components/main/UI/Modal/ModalGeneral";
 import Meta from "./components/main/Meta/Meta";
+import RemoveAccount from "./components/main/RemoveAccount/RemoveAccount";
 
 // React Icons
 import { ImFileText2 } from "react-icons/im";
@@ -39,6 +41,7 @@ if (localStorage.token) {
 
 const App = () => {
     const [showModal, setShowModal] = useState(false);
+    const [showModalGeneral, setShowModalGeneral] = useState(false);
 
     useEffect(() => {
         store.dispatch(loadUser());
@@ -71,6 +74,9 @@ const App = () => {
     const showModalHandler = () => {
         setShowModal(!showModal);
     };
+    const showModalGeneralHandler = (arg) => {
+        setShowModalGeneral(arg);
+    };
 
     return (
         <Provider store={store}>
@@ -81,11 +87,17 @@ const App = () => {
                             show={showModal}
                             showmodalhandler={showModalHandler}
                         >
-                            {" "}
-                            <TrackVisibility>
-                                <Meta show={showModal} />
-                            </TrackVisibility>
+                            <Meta show={showModal} />
                         </Modal>
+                        <ModalGeneral show={showModalGeneral}>
+                            {showModalGeneral && (
+                                <RemoveAccount
+                                    showModalGeneralHandler={
+                                        showModalGeneralHandler
+                                    }
+                                />
+                            )}
+                        </ModalGeneral>
                         <Switch>
                             <Route exact path="/">
                                 <LayoutLanding>
@@ -107,6 +119,9 @@ const App = () => {
                                 <PrivateRoute
                                     exact
                                     path="/profile"
+                                    showModalGeneralHandler={
+                                        showModalGeneralHandler
+                                    }
                                     component={Profile}
                                 />
                                 <PrivateRoute

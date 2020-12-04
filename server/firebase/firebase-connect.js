@@ -1,7 +1,13 @@
+const deploying = require("../../config/deploying");
+
 const firebase = require("firebase");
 
+const secret = deploying
+    ? process.env.FIREBASE_SECRET
+    : require("../secrets.json").FIREBASE_SECRET;
+
 /* uncomment for heroku deployment */
-const secret = process.env.FIREBASE_SECRET;
+// const secret = process.env.FIREBASE_SECRET;
 /* comment out for heroku deploy */
 // const secret = require("../secrets.json").FIREBASE_SECRET;
 

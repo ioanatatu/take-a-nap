@@ -1,4 +1,4 @@
-const amDeploying = true;
+const deploying = require("../../../config/deploying");
 
 const express = require("express");
 const router = express.Router();
@@ -13,7 +13,7 @@ const admin = require("firebase-admin");
 // const fb = require("../../firebase/firebase-connect");
 // const db = fb.database();
 
-const serviceAccount = amDeploying
+const serviceAccount = deploying
     ? JSON.parse(process.env.FIREBASE_ADMIN)
     : require("/mnt/c/Users/petit/Desktop/take-a-nap-petition/server/firebase/take-a-nap-56da1-firebase-adminsdk-i557h-0d9c0f7c6f.json");
 
@@ -61,7 +61,7 @@ router.post("/", async (req, res) => {
     const encryptedEmail = cryptr.encrypt(email);
     console.log(encryptedEmail);
 
-    const unsubscribeLink = amDeploying
+    const unsubscribeLink = deploying
         ? "https://rocky-brook-13518.herokuapp.com/api/subscribe/unsubscribe/"
         : "http://localhost:4000/api/subscribe/unsubscribe/";
 
@@ -127,7 +127,7 @@ router.get("/unsubscribe/:hash", async (req, res) => {
         // return res.json({ success: dt });
         // line below works
         // return res.send("<h1>you have been successfully unsubscribed</h1>");
-        let linkRedirect = amDeploying
+        let linkRedirect = deploying
             ? "https://rocky-brook-13518.herokuapp.com/"
             : "http://localhost:3002/";
 

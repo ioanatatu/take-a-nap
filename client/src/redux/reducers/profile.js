@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { LOAD_PROFILE, DELETE_PROFILE, PROFILE_ERROR } from "../actions/types";
+import { LOAD_PROFILE, DELETE_PROFILE } from "../actions/types";
 
 const initialState = { profile: null, loading: true };
 

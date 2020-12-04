@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { login } from "../../redux/actions/auth";
 
 // Components
-import Alert from "../../components/main/Alert/Alert";
+// import Alert from "../../components/main/Alert/Alert";
 
 const Login = ({ login, isAuthenticated, alerts }) => {
     const [alertEmail, setAlertEmail] = useState([]);
