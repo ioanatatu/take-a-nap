@@ -44,6 +44,11 @@ const App = () => {
     const [showModalGeneral, setShowModalGeneral] = useState(false);
 
     useEffect(() => {
+        // fb login
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+
         store.dispatch(loadUser());
 
         if (localStorage.token) {

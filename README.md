@@ -13,7 +13,7 @@
 <p align="center">🚩 Go to <a href="https://www.thenap.de">thenap</a> and subscribe to my newsletter 💤</p>
 <hr style="margin-bottom: 50px">
 
-<div align="center">
+<div align="center" style="margin-bottom: 20px;">
 <img src="https://media.giphy.com/media/i04lDCGXrZ4aULLjmK/giphy.gif" width="60%"/></div>
 
 <p align="center" style="margin-top: 40px;">Languages and Tools:</p>
