@@ -5,6 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../redux/actions/auth";
+import FacebookLogin from "react-facebook-login";
 
 // Components
 // import Alert from "../../components/main/Alert/Alert";
@@ -46,6 +47,12 @@ const Login = ({ login, isAuthenticated, alerts }) => {
         console.log(formData);
         // const result = await axios.post("/api/auth", formData);
         login(email, password);
+    };
+
+    // Facebook
+    const componentClicked = () => {};
+    const responseFacebook = (response) => {
+        console.log(response);
     };
 
     // Redirect to signature if loged in
@@ -113,6 +120,13 @@ const Login = ({ login, isAuthenticated, alerts }) => {
                         style={{ backgroundColor: "#3333dd" }}
                     />
                 </form>
+                <FacebookLogin
+                    appId="207352207522048"
+                    autoLoad={true}
+                    fields="name,email,picture"
+                    onClick={componentClicked}
+                    callback={responseFacebook}
+                />
                 <p className={auth.Footer}>
                     Don't have an account?{" "}
                     <Link to="/register">
